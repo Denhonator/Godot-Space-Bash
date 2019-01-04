@@ -8,6 +8,8 @@ var onGround = false
 var carrying = null
 var inFront = null
 var stun = 0
+var health = 100
+var hpbar
 var ray
 var attack
 var audio
@@ -19,10 +21,11 @@ func _ready():
 	attack = find_node("Attack")
 	audio = find_node("Audio")
 	particles = find_node("Particles")
+	hpbar = find_node("Health")
 	ms = maxms
 
 func _process(delta):
-	if transform.origin.y < -3:
+	if transform.origin.y < -3 or health<=0:
 		Die()
 	MovementAndPhysics(delta)
 	if state["attack"]<=0:
@@ -126,9 +129,13 @@ func GetHit(ex,hit):
 	if stun<=0:
 		if ex.length_squared():
 			vel=ex*10
+			health-=20
 		elif hit.length_squared():
 			vel=hit*10
+			health-=10
 		stun = 1
+		state["attack"]=0
+		hpbar.value = health
 
 func _on_Area_body_entered(body):
 	if body.has_method("PickedUp"):
