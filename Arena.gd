@@ -30,7 +30,18 @@ func SpawnTNT():
 			newTNT.transform.origin = childpos
 			newTNT.scale = Vector3(0,0,0)
 			add_child(newTNT)
+			if get_tree().has_network_peer():
+				rpc("SpawnTNTTo",childpos, a==0)
 			return
+			
+remote func SpawnTNTTo(pos, n):
+	if n:
+		newTNT = nitro.instance()
+	else:
+		newTNT = TNT.instance()
+	newTNT.transform.origin = pos
+	newTNT.scale = Vector3(0,0,0)
+	add_child(newTNT)
 
 func _process(delta):
 	timer+=delta
@@ -42,7 +53,6 @@ func _process(delta):
 			timer=0
 			a = amount
 		SpawnTNT()
-	pass
 
 
 func _on_TNTButton():

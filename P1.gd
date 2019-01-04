@@ -81,7 +81,7 @@ func PickupAndThrow(delta):
 	if state["throw"]>0:
 		state["throw"]-=delta
 		if state["throw"]<=0.1 and carrying:
-			carrying.Throw()
+			carrying.Throw(get_global_transform().basis.y*5+Vector3(0,4,0))
 			carrying = null
 		elif state["throw"]<=0:
 			ms = maxms
@@ -115,10 +115,12 @@ func MovementAndPhysics(delta):
 			angle+=2*PI
 		rotate_y(clamp(angle,-turnrate,turnrate))
 	
-	onGround = is_on_floor()
-	
 	if not onGround:
 		vel.y -= 0.2
+		if carrying and vel.y<-1:
+			carrying.Throw(Vector3(0,7,0))
+			carrying = null
+			ms = maxms
 	else:
 		if not carrying and Input.is_action_just_pressed(get_name()+"jump"):
 			vel.y = 6
@@ -126,6 +128,7 @@ func MovementAndPhysics(delta):
 			vel.y = -0.2
 	
 	move_and_slide(vel, Vector3(0,1,0))
+	onGround = is_on_floor()
 
 func GetHit(ex,hit):
 	if stun<=0:
@@ -138,6 +141,10 @@ func GetHit(ex,hit):
 		stun = 1
 		state["attack"]=0
 		hpbar.value = health
+		if carrying:
+			carrying.Throw(Vector3(0,7,0))
+		carrying = null
+		ms = maxms
 
 func _on_Area_body_entered(body):
 	if body.has_method("PickedUp"):

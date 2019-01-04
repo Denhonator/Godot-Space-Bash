@@ -54,8 +54,8 @@ func PickedUp(node):
 		return true
 	return false
 	
-func Throw():
-	velocity = (player.get_global_transform().basis.y*5+Vector3(0,4,0))
+func Throw(dir):
+	velocity = dir
 	player = null
 	thrown = true
 

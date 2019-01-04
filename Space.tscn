@@ -4,11 +4,11 @@
 [ext_resource path="res://Arena.gd" type="Script" id=2]
 [ext_resource path="res://floor.jpg" type="Texture" id=3]
 [ext_resource path="res://Camera.gd" type="Script" id=4]
-[ext_resource path="res://models/crash/icon.png" type="Texture" id=5]
-[ext_resource path="res://P1.gd" type="Script" id=6]
-[ext_resource path="res://models/crash/crashbandicoot.tres" type="ArrayMesh" id=7]
-[ext_resource path="res://models/crash/spin.ogg" type="AudioStream" id=8]
-[ext_resource path="res://models/crash/spineffect.png" type="Texture" id=9]
+[ext_resource path="res://P1.gd" type="Script" id=5]
+[ext_resource path="res://models/crash/crashbandicoot.tres" type="ArrayMesh" id=6]
+[ext_resource path="res://models/crash/spin.ogg" type="AudioStream" id=7]
+[ext_resource path="res://models/crash/spineffect.png" type="Texture" id=8]
+[ext_resource path="res://models/crash/icon.png" type="Texture" id=9]
 [ext_resource path="res://TNT/tnt.jpg" type="Texture" id=10]
 [ext_resource path="res://crash-a-like.ttf" type="DynamicFontData" id=11]
 [ext_resource path="res://Label.gd" type="Script" id=12]
@@ -84,64 +84,6 @@ _sections_unfolded = [ "Flags" ]
 
 extents = Vector3( 0.5, 2.3, 0.5 )
 
-[sub_resource type="StyleBoxFlat" id=13]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-bg_color = Color( 0, 1, 0, 1 )
-draw_center = true
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 0, 0, 0, 1 )
-border_blend = false
-corner_radius_top_left = 0
-corner_radius_top_right = 0
-corner_radius_bottom_right = 0
-corner_radius_bottom_left = 0
-corner_detail = 8
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-shadow_color = Color( 0, 0, 0, 0.6 )
-shadow_size = 0
-anti_aliasing = true
-anti_aliasing_size = 1
-_sections_unfolded = [ "Border", "Border Width" ]
-
-[sub_resource type="StyleBoxFlat" id=14]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-bg_color = Color( 1, 0, 0, 1 )
-draw_center = true
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 0, 0, 0, 1 )
-border_blend = false
-corner_radius_top_left = 0
-corner_radius_top_right = 0
-corner_radius_bottom_right = 0
-corner_radius_bottom_left = 0
-corner_detail = 8
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-shadow_color = Color( 0, 0, 0, 0.6 )
-shadow_size = 0
-anti_aliasing = true
-anti_aliasing_size = 1
-_sections_unfolded = [ "Border", "Border Width" ]
-
 [sub_resource type="CapsuleShape" id=5]
 
 radius = 0.250057
@@ -180,7 +122,7 @@ params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
 albedo_color = Color( 1, 0.266846, 0.0976563, 1 )
-albedo_texture = ExtResource( 9 )
+albedo_texture = ExtResource( 8 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -268,6 +210,64 @@ height = 1.5
 radial_segments = 64
 rings = 32
 is_hemisphere = false
+
+[sub_resource type="StyleBoxFlat" id=13]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0, 1, 0, 1 )
+draw_center = true
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0, 0, 0, 1 )
+border_blend = false
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+_sections_unfolded = [ "Border", "Border Width" ]
+
+[sub_resource type="StyleBoxFlat" id=14]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 1, 0, 0, 1 )
+draw_center = true
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0, 0, 0, 1 )
+border_blend = false
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+_sections_unfolded = [ "Border", "Border Width" ]
 
 [sub_resource type="DynamicFont" id=15]
 
@@ -4479,83 +4479,10 @@ current = true
 [node name="Players" type="Spatial" parent="." index="2"]
 
 pause_mode = 1
-editor/display_folded = true
 
-[node name="UI" type="Node2D" parent="Players" index="0"]
-
-[node name="Player2Health" type="ProgressBar" parent="Players/UI" index="0"]
+[node name="Characters" type="Spatial" parent="Players" index="0"]
 
 editor/display_folded = true
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 600.0
-margin_top = 115.0
-margin_right = 711.0
-margin_bottom = 134.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 0
-custom_styles/fg = SubResource( 13 )
-custom_styles/bg = SubResource( 14 )
-min_value = 0.0
-max_value = 100.0
-step = 1.0
-page = 0.0
-value = 100.0
-exp_edit = false
-rounded = false
-percent_visible = false
-_sections_unfolded = [ "Percent", "Rect", "custom_styles" ]
-
-[node name="Sprite" type="Sprite" parent="Players/UI/Player2Health" index="0"]
-
-position = Vector2( 65.7925, -56.9877 )
-scale = Vector2( 0.9, 0.9 )
-texture = ExtResource( 5 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Player1Health" type="ProgressBar" parent="Players/UI" index="1"]
-
-editor/display_folded = true
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 300.0
-margin_top = 115.0
-margin_right = 411.0
-margin_bottom = 134.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 0
-custom_styles/fg = SubResource( 13 )
-custom_styles/bg = SubResource( 14 )
-min_value = 0.0
-max_value = 100.0
-step = 1.0
-page = 0.0
-value = 100.0
-exp_edit = false
-rounded = false
-percent_visible = false
-_sections_unfolded = [ "Percent", "Rect", "custom_styles" ]
-
-[node name="Sprite" type="Sprite" parent="Players/UI/Player1Health" index="0"]
-
-position = Vector2( 65.7925, -56.9877 )
-scale = Vector2( 0.9, 0.9 )
-texture = ExtResource( 5 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Characters" type="Spatial" parent="Players" index="1"]
 
 [node name="Player1" type="KinematicBody" parent="Players/Characters" index="0"]
 
@@ -4571,7 +4498,7 @@ axis_lock_angular_x = false
 axis_lock_angular_y = false
 axis_lock_angular_z = false
 collision/safe_margin = 0.001
-script = ExtResource( 6 )
+script = ExtResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="Players/Characters/Player1" index="0"]
@@ -4593,7 +4520,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 7 )
+mesh = ExtResource( 6 )
 skeleton = NodePath("..")
 material/0 = null
 material/1 = null
@@ -4678,7 +4605,7 @@ collision_mask = 1
 [node name="Audio" type="AudioStreamPlayer3D" parent="Players/Characters/Player1" index="5"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.98023e-008, -1 )
-stream = ExtResource( 8 )
+stream = ExtResource( 7 )
 attenuation_model = 0
 unit_db = 15.0
 unit_size = 1.0
@@ -4741,7 +4668,7 @@ axis_lock_angular_x = false
 axis_lock_angular_y = false
 axis_lock_angular_z = false
 collision/safe_margin = 0.001
-script = ExtResource( 6 )
+script = ExtResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="Players/Characters/Player2" index="0"]
@@ -4763,7 +4690,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 7 )
+mesh = ExtResource( 6 )
 skeleton = NodePath("..")
 material/0 = null
 material/1 = null
@@ -4849,7 +4776,7 @@ collision_mask = 1
 [node name="Audio" type="AudioStreamPlayer3D" parent="Players/Characters/Player2" index="5"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.98023e-008, -1 )
-stream = ExtResource( 8 )
+stream = ExtResource( 7 )
 attenuation_model = 0
 unit_db = 15.0
 unit_size = 1.0
@@ -4897,6 +4824,82 @@ draw_passes = 1
 draw_pass_1 = SubResource( 12 )
 _sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Time", "Transform" ]
 
+[node name="UI" type="Node2D" parent="Players" index="1"]
+
+editor/display_folded = true
+
+[node name="Player2Health" type="ProgressBar" parent="Players/UI" index="0"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 600.0
+margin_top = 115.0
+margin_right = 711.0
+margin_bottom = 134.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+custom_styles/fg = SubResource( 13 )
+custom_styles/bg = SubResource( 14 )
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 100.0
+exp_edit = false
+rounded = false
+percent_visible = false
+_sections_unfolded = [ "Percent", "Rect", "custom_styles" ]
+
+[node name="Sprite" type="Sprite" parent="Players/UI/Player2Health" index="0"]
+
+position = Vector2( 65.7925, -56.9877 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 9 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Player1Health" type="ProgressBar" parent="Players/UI" index="1"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 300.0
+margin_top = 115.0
+margin_right = 411.0
+margin_bottom = 134.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+custom_styles/fg = SubResource( 13 )
+custom_styles/bg = SubResource( 14 )
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 100.0
+exp_edit = false
+rounded = false
+percent_visible = false
+_sections_unfolded = [ "Percent", "Rect", "custom_styles" ]
+
+[node name="Sprite" type="Sprite" parent="Players/UI/Player1Health" index="0"]
+
+position = Vector2( 65.7925, -56.9877 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 9 )
+_sections_unfolded = [ "Transform" ]
+
 [node name="DirectionalLight" type="DirectionalLight" parent="." index="3"]
 
 transform = Transform( 1, 0, 0, 0, -4.37114e-008, 1, 0, -1, -4.37114e-008, 0, 3.66097, 0 )
@@ -4926,8 +4929,6 @@ directional_shadow_max_distance = 200.0
 _sections_unfolded = [ "Light", "Transform" ]
 
 [node name="UI" type="Node2D" parent="." index="4"]
-
-editor/display_folded = true
 
 [node name="TextureButton" type="TextureButton" parent="UI" index="0"]
 
@@ -4990,7 +4991,6 @@ bus = "Master"
 
 [node name="Menu" type="Node2D" parent="." index="6"]
 
-visible = false
 position = Vector2( 1.50732, -60.2935 )
 _sections_unfolded = [ "Visibility" ]
 
@@ -5021,16 +5021,72 @@ flat = false
 align = 1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="Quit" type="Button" parent="Menu" index="1"]
+[node name="Join" type="Button" parent="Menu" index="1"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 895.0
+margin_top = 306.0
+margin_right = 1080.0
+margin_bottom = 357.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 14 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Join"
+flat = false
+align = 1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Host" type="Button" parent="Menu" index="2"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 895.0
+margin_top = 382.0
+margin_right = 1080.0
+margin_bottom = 433.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 14 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Host"
+flat = false
+align = 1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Quit" type="Button" parent="Menu" index="3"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 894.0
-margin_top = 317.0
+margin_top = 310.0
 margin_right = 1081.0
-margin_bottom = 368.0
+margin_bottom = 361.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -5048,6 +5104,32 @@ flat = false
 align = 1
 _sections_unfolded = [ "custom_fonts" ]
 
+[node name="Camera2D" type="Camera2D" parent="." index="7"]
+
+position = Vector2( 960.191, 539.468 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1.5, 1.5 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = false
+drag_margin_v_enabled = false
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+
 [connection signal="body_entered" from="Players/Characters/Player1/Front" to="Players/Characters/Player1" method="_on_Area_body_entered"]
 
 [connection signal="body_exited" from="Players/Characters/Player1/Front" to="Players/Characters/Player1" method="_on_Area_body_exited"]
@@ -5063,6 +5145,10 @@ _sections_unfolded = [ "custom_fonts" ]
 [connection signal="button_up" from="UI/TextureButton" to="Arena" method="_on_TNTButton"]
 
 [connection signal="pressed" from="Menu/Restart" to="." method="_on_Restart_pressed"]
+
+[connection signal="pressed" from="Menu/Join" to="." method="_on_Join_pressed"]
+
+[connection signal="pressed" from="Menu/Host" to="." method="_on_Host_pressed"]
 
 [connection signal="pressed" from="Menu/Quit" to="." method="_on_Quit_pressed"]
 

@@ -4,9 +4,11 @@ var seconds = 0
 var minutes = 0
 var runTimer = true
 var menu
+var peer
 
 func _ready():
 	menu = find_node("Menu")
+	get_tree().paused = true
 
 func _process(delta):
 	if runTimer and not get_tree().paused:
@@ -15,13 +17,38 @@ func _process(delta):
 			seconds-=60
 			minutes+=1
 	if Input.is_action_just_pressed("ui_cancel"):
-		menu.visible = !menu.visible
-		get_tree().paused = menu.visible
+		Pause()
+		if get_tree().has_network_peer():
+			rpc("Pause")
+		
+remote func Pause():
+	menu.visible = !menu.visible
+	get_tree().paused = menu.visible
 	
-func _on_Restart_pressed():
+remote func Restart():
 	get_tree().paused = false
 	get_tree().change_scene("res://Space.tscn")
-
+	
+func _on_Restart_pressed():
+	Restart()
+	if get_tree().has_network_peer():
+		rpc("Restart")
 
 func _on_Quit_pressed():
 	get_tree().quit()
+	
+func _notification(what):
+  if what == MainLoop.NOTIFICATION_WM_FOCUS_IN:
+    AudioServer.set_bus_mute(0,false)
+  elif what == MainLoop.NOTIFICATION_WM_FOCUS_OUT:
+    AudioServer.set_bus_mute(0,true)
+
+func _on_Join_pressed():
+	peer = NetworkedMultiplayerENet.new()
+	peer.create_server(7777, 2)
+	get_tree().set_network_peer(peer)
+
+func _on_Host_pressed():
+	peer = NetworkedMultiplayerENet.new()
+	peer.create_client("127.0.0.1", 7777)
+	get_tree().set_network_peer(peer)
