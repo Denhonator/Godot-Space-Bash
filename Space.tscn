@@ -1,18 +1,19 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Space.gd" type="Script" id=1]
 [ext_resource path="res://Arena.gd" type="Script" id=2]
 [ext_resource path="res://floor.jpg" type="Texture" id=3]
 [ext_resource path="res://Camera.gd" type="Script" id=4]
-[ext_resource path="res://P1.gd" type="Script" id=5]
-[ext_resource path="res://models/crash/crashbandicoot.tres" type="ArrayMesh" id=6]
-[ext_resource path="res://models/crash/spin.ogg" type="AudioStream" id=7]
-[ext_resource path="res://models/crash/spineffect.png" type="Texture" id=8]
-[ext_resource path="res://models/crash/icon.png" type="Texture" id=9]
+[ext_resource path="res://models/crash/icon.png" type="Texture" id=5]
+[ext_resource path="res://P1.gd" type="Script" id=6]
+[ext_resource path="res://models/crash/crashbandicoot.tres" type="ArrayMesh" id=7]
+[ext_resource path="res://models/crash/spin.ogg" type="AudioStream" id=8]
+[ext_resource path="res://models/crash/spineffect.png" type="Texture" id=9]
 [ext_resource path="res://TNT/tnt.jpg" type="Texture" id=10]
 [ext_resource path="res://crash-a-like.ttf" type="DynamicFontData" id=11]
 [ext_resource path="res://Label.gd" type="Script" id=12]
 [ext_resource path="res://ogmusic.ogg" type="AudioStream" id=13]
+[ext_resource path="res://menufont.tres" type="DynamicFont" id=14]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -83,134 +84,7 @@ _sections_unfolded = [ "Flags" ]
 
 extents = Vector3( 0.5, 2.3, 0.5 )
 
-[sub_resource type="CapsuleShape" id=5]
-
-radius = 0.250057
-height = 0.955417
-
-[sub_resource type="BoxShape" id=6]
-
-extents = Vector3( 0.468791, 0.379891, 0.36274 )
-
-[sub_resource type="CapsuleShape" id=7]
-
-radius = 0.898299
-height = 0.002
-
-[sub_resource type="SpatialMaterial" id=9]
-
-render_priority = 0
-flags_transparent = true
-flags_unshaded = true
-flags_vertex_lighting = false
-flags_no_depth_test = false
-flags_use_point_size = false
-flags_world_triplanar = false
-flags_fixed_size = false
-flags_albedo_tex_force_srgb = false
-vertex_color_use_as_albedo = false
-vertex_color_is_srgb = false
-params_diffuse_mode = 0
-params_specular_mode = 0
-params_blend_mode = 0
-params_cull_mode = 0
-params_depth_draw_mode = 0
-params_line_width = 1.0
-params_point_size = 1.0
-params_billboard_mode = 0
-params_grow = false
-params_use_alpha_scissor = false
-albedo_color = Color( 1, 0.266846, 0.0976563, 1 )
-albedo_texture = ExtResource( 8 )
-metallic = 0.0
-metallic_specular = 0.5
-metallic_texture_channel = 0
-roughness = 0.0
-roughness_texture_channel = 0
-emission_enabled = false
-normal_enabled = false
-rim_enabled = false
-clearcoat_enabled = false
-anisotropy_enabled = false
-ao_enabled = false
-depth_enabled = false
-subsurf_scatter_enabled = false
-transmission_enabled = false
-refraction_enabled = false
-detail_enabled = false
-uv1_scale = Vector3( 7, 7, 7 )
-uv1_offset = Vector3( 0, 0, 0 )
-uv1_triplanar = false
-uv1_triplanar_sharpness = 1.0
-uv2_scale = Vector3( 1, 1, 1 )
-uv2_offset = Vector3( 0, 0, 0 )
-uv2_triplanar = false
-uv2_triplanar_sharpness = 1.0
-proximity_fade_enable = false
-distance_fade_enable = false
-_sections_unfolded = [ "UV1" ]
-
-[sub_resource type="Curve" id=12]
-
-min_value = 0.0
-max_value = 1.0
-bake_resolution = 100
-_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.173381, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.873612, 1 ), 0.0, 0.109249, 1, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=13]
-
-flags = 4
-width = 2048
-curve = SubResource( 12 )
-
-[sub_resource type="ParticlesMaterial" id=10]
-
-render_priority = 0
-trail_divisor = 1
-emission_shape = 0
-flag_align_y = false
-flag_rotate_y = true
-flag_disable_z = false
-spread = 45.0
-flatness = 0.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 0.0
-initial_velocity_random = 0.0
-angular_velocity = 0.0
-angular_velocity_random = 0.0
-linear_accel = 0.0
-linear_accel_random = 0.0
-radial_accel = 0.0
-radial_accel_random = 0.0
-tangential_accel = 0.0
-tangential_accel_random = 0.0
-damping = 0.0
-damping_random = 0.0
-angle = 10.0
-angle_random = 0.0
-scale = 1.0
-scale_random = 0.0
-scale_curve = SubResource( 13 )
-color = Color( 1, 1, 1, 1 )
-hue_variation = 0.0
-hue_variation_random = 0.0
-anim_speed = 0.0
-anim_speed_random = 0.0
-anim_offset = 0.0
-anim_offset_random = 0.0
-anim_loop = false
-_sections_unfolded = [ "Scale" ]
-
-[sub_resource type="SphereMesh" id=11]
-
-custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
-radius = 0.75
-height = 1.5
-radial_segments = 64
-rings = 32
-is_hemisphere = false
-
-[sub_resource type="StyleBoxFlat" id=14]
+[sub_resource type="StyleBoxFlat" id=13]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -239,7 +113,7 @@ anti_aliasing = true
 anti_aliasing_size = 1
 _sections_unfolded = [ "Border", "Border Width" ]
 
-[sub_resource type="StyleBoxFlat" id=15]
+[sub_resource type="StyleBoxFlat" id=14]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -268,9 +142,136 @@ anti_aliasing = true
 anti_aliasing_size = 1
 _sections_unfolded = [ "Border", "Border Width" ]
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="CapsuleShape" id=5]
 
-size = 100
+radius = 0.250057
+height = 0.955417
+
+[sub_resource type="BoxShape" id=6]
+
+extents = Vector3( 0.468791, 0.360249, 0.192037 )
+
+[sub_resource type="CapsuleShape" id=7]
+
+radius = 0.898299
+height = 0.002
+
+[sub_resource type="SpatialMaterial" id=8]
+
+render_priority = 0
+flags_transparent = true
+flags_unshaded = true
+flags_vertex_lighting = false
+flags_no_depth_test = false
+flags_use_point_size = false
+flags_world_triplanar = false
+flags_fixed_size = false
+flags_albedo_tex_force_srgb = false
+vertex_color_use_as_albedo = false
+vertex_color_is_srgb = false
+params_diffuse_mode = 0
+params_specular_mode = 0
+params_blend_mode = 0
+params_cull_mode = 0
+params_depth_draw_mode = 0
+params_line_width = 1.0
+params_point_size = 1.0
+params_billboard_mode = 0
+params_grow = false
+params_use_alpha_scissor = false
+albedo_color = Color( 1, 0.266846, 0.0976563, 1 )
+albedo_texture = ExtResource( 9 )
+metallic = 0.0
+metallic_specular = 0.5
+metallic_texture_channel = 0
+roughness = 0.0
+roughness_texture_channel = 0
+emission_enabled = false
+normal_enabled = false
+rim_enabled = false
+clearcoat_enabled = false
+anisotropy_enabled = false
+ao_enabled = false
+depth_enabled = false
+subsurf_scatter_enabled = false
+transmission_enabled = false
+refraction_enabled = false
+detail_enabled = false
+uv1_scale = Vector3( 7, 7, 7 )
+uv1_offset = Vector3( 0, 0, 0 )
+uv1_triplanar = false
+uv1_triplanar_sharpness = 1.0
+uv2_scale = Vector3( 1, 1, 1 )
+uv2_offset = Vector3( 0, 0, 0 )
+uv2_triplanar = false
+uv2_triplanar_sharpness = 1.0
+proximity_fade_enable = false
+distance_fade_enable = false
+_sections_unfolded = [ "UV1" ]
+
+[sub_resource type="Curve" id=9]
+
+min_value = 0.0
+max_value = 1.0
+bake_resolution = 100
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.173381, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.873612, 1 ), 0.0, 0.109249, 1, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=10]
+
+flags = 4
+width = 2048
+curve = SubResource( 9 )
+
+[sub_resource type="ParticlesMaterial" id=11]
+
+render_priority = 0
+trail_divisor = 1
+emission_shape = 0
+flag_align_y = false
+flag_rotate_y = true
+flag_disable_z = false
+spread = 45.0
+flatness = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 0.0
+initial_velocity_random = 0.0
+angular_velocity = 0.0
+angular_velocity_random = 0.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 0.0
+damping_random = 0.0
+angle = 10.0
+angle_random = 0.0
+scale = 1.0
+scale_random = 0.0
+scale_curve = SubResource( 10 )
+color = Color( 1, 1, 1, 1 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 0.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Scale" ]
+
+[sub_resource type="SphereMesh" id=12]
+
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+radius = 0.75
+height = 1.5
+radial_segments = 64
+rings = 32
+is_hemisphere = false
+
+[sub_resource type="DynamicFont" id=15]
+
+size = 124
 use_mipmaps = false
 use_filter = false
 font_data = ExtResource( 11 )
@@ -278,10 +279,13 @@ _sections_unfolded = [ "Font", "Settings" ]
 
 [node name="Main" type="Spatial" index="0"]
 
+pause_mode = 2
 script = ExtResource( 1 )
+_sections_unfolded = [ "Pause" ]
 
 [node name="Arena" type="Spatial" parent="." index="0"]
 
+pause_mode = 1
 editor/display_folded = true
 script = ExtResource( 2 )
 
@@ -4451,6 +4455,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Camera" type="Camera" parent="." index="1"]
 
+editor/display_folded = true
 transform = Transform( -4.37114e-008, -0.707107, 0.707107, 0, 0.707107, 0.707107, -1, 3.09086e-008, -3.09086e-008, 9.06751, 6.52222, 4.07604e-008 )
 keep_aspect = 1
 cull_mask = 1048575
@@ -4473,9 +4478,87 @@ current = true
 
 [node name="Players" type="Spatial" parent="." index="2"]
 
-[node name="Player1" type="KinematicBody" parent="Players" index="0"]
+pause_mode = 1
+editor/display_folded = true
+
+[node name="UI" type="Node2D" parent="Players" index="0"]
+
+[node name="Player2Health" type="ProgressBar" parent="Players/UI" index="0"]
 
 editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 600.0
+margin_top = 115.0
+margin_right = 711.0
+margin_bottom = 134.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+custom_styles/fg = SubResource( 13 )
+custom_styles/bg = SubResource( 14 )
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 100.0
+exp_edit = false
+rounded = false
+percent_visible = false
+_sections_unfolded = [ "Percent", "Rect", "custom_styles" ]
+
+[node name="Sprite" type="Sprite" parent="Players/UI/Player2Health" index="0"]
+
+position = Vector2( 65.7925, -56.9877 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Player1Health" type="ProgressBar" parent="Players/UI" index="1"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 300.0
+margin_top = 115.0
+margin_right = 411.0
+margin_bottom = 134.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+custom_styles/fg = SubResource( 13 )
+custom_styles/bg = SubResource( 14 )
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 100.0
+exp_edit = false
+rounded = false
+percent_visible = false
+_sections_unfolded = [ "Percent", "Rect", "custom_styles" ]
+
+[node name="Sprite" type="Sprite" parent="Players/UI/Player1Health" index="0"]
+
+position = Vector2( 65.7925, -56.9877 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Characters" type="Spatial" parent="Players" index="1"]
+
+[node name="Player1" type="KinematicBody" parent="Players/Characters" index="0"]
+
 transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 1, 0.184525, -0.227213 )
 input_ray_pickable = true
 input_capture_on_drag = false
@@ -4488,17 +4571,17 @@ axis_lock_angular_x = false
 axis_lock_angular_y = false
 axis_lock_angular_z = false
 collision/safe_margin = 0.001
-script = ExtResource( 5 )
+script = ExtResource( 6 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="CollisionShape" type="CollisionShape" parent="Players/Player1" index="0"]
+[node name="CollisionShape" type="CollisionShape" parent="Players/Characters/Player1" index="0"]
 
 transform = Transform( 1, 0, 0, 0, 1, -3.55271e-015, 0, 3.55271e-015, 1, 0.0130349, 0.0517744, -0.812018 )
 shape = SubResource( 5 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
-[node name="P1" type="MeshInstance" parent="Players/Player1" index="1"]
+[node name="P1" type="MeshInstance" parent="Players/Characters/Player1" index="1"]
 
 transform = Transform( 0.01, 0, 0, 0, -4.37114e-010, 0.01, 0, -0.01, -4.37114e-010, 0.0130349, -0.103723, 0 )
 layers = 1
@@ -4510,7 +4593,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 6 )
+mesh = ExtResource( 7 )
 skeleton = NodePath("..")
 material/0 = null
 material/1 = null
@@ -4523,9 +4606,8 @@ material/7 = null
 material/8 = null
 _sections_unfolded = [ "Transform" ]
 
-[node name="Front" type="Area" parent="Players/Player1" index="2"]
+[node name="Front" type="Area" parent="Players/Characters/Player1" index="2"]
 
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.831785 )
 input_ray_pickable = false
 input_capture_on_drag = false
@@ -4548,13 +4630,13 @@ reverb_bus_name = "Master"
 reverb_bus_amount = 0.0
 reverb_bus_uniformity = 0.0
 
-[node name="CollisionShape" type="CollisionShape" parent="Players/Player1/Front" index="0"]
+[node name="CollisionShape" type="CollisionShape" parent="Players/Characters/Player1/Front" index="0"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.152739, 0.319174 )
 shape = SubResource( 6 )
 disabled = false
 
-[node name="Attack" type="Area" parent="Players/Player1" index="3"]
+[node name="Attack" type="Area" parent="Players/Characters/Player1" index="3"]
 
 editor/display_folded = true
 input_ray_pickable = false
@@ -4578,14 +4660,14 @@ reverb_bus_name = "Master"
 reverb_bus_amount = 0.0
 reverb_bus_uniformity = 0.0
 
-[node name="CollisionShape2" type="CollisionShape" parent="Players/Player1/Attack" index="0"]
+[node name="CollisionShape2" type="CollisionShape" parent="Players/Characters/Player1/Attack" index="0"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00416422, -0.735485 )
 shape = SubResource( 7 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
-[node name="RayCast" type="RayCast" parent="Players/Player1" index="4"]
+[node name="RayCast" type="RayCast" parent="Players/Characters/Player1" index="4"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.98023e-008, -0.145806 )
 enabled = true
@@ -4593,10 +4675,10 @@ exclude_parent = true
 cast_to = Vector3( 0, 0, 0.1 )
 collision_mask = 1
 
-[node name="Audio" type="AudioStreamPlayer3D" parent="Players/Player1" index="5"]
+[node name="Audio" type="AudioStreamPlayer3D" parent="Players/Characters/Player1" index="5"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.98023e-008, -1 )
-stream = ExtResource( 7 )
+stream = ExtResource( 8 )
 attenuation_model = 0
 unit_db = 15.0
 unit_size = 1.0
@@ -4614,11 +4696,11 @@ attenuation_filter_cutoff_hz = 5000.0
 attenuation_filter_db = -24.0
 doppler_tracking = 0
 
-[node name="Particles" type="Particles" parent="Players/Player1" index="6"]
+[node name="Particles" type="Particles" parent="Players/Characters/Player1" index="6"]
 
 transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 0.0733841, -0.885435 )
 layers = 1
-material_override = SubResource( 9 )
+material_override = SubResource( 8 )
 cast_shadow = 1
 extra_cull_margin = 0.0
 use_in_baked_light = false
@@ -4639,48 +4721,14 @@ fract_delta = true
 visibility_aabb = AABB( -4, -4, -4, 8, 8, 8 )
 local_coords = true
 draw_order = 0
-process_material = SubResource( 10 )
+process_material = SubResource( 11 )
 draw_passes = 1
-draw_pass_1 = SubResource( 11 )
+draw_pass_1 = SubResource( 12 )
 _sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Time", "Transform" ]
 
-[node name="Health" type="ProgressBar" parent="Players/Player1" index="7"]
+[node name="Player2" type="KinematicBody" parent="Players/Characters" index="1"]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 345.0
-margin_top = 115.0
-margin_right = 456.0
-margin_bottom = 134.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 0
-custom_styles/fg = SubResource( 14 )
-custom_styles/bg = SubResource( 15 )
-min_value = 0.0
-max_value = 100.0
-step = 1.0
-page = 0.0
-value = 100.0
-exp_edit = false
-rounded = false
-percent_visible = false
-_sections_unfolded = [ "Percent", "custom_styles" ]
-
-[node name="Sprite" type="Sprite" parent="Players/Player1/Health" index="0"]
-
-position = Vector2( 65.7925, -56.9877 )
-scale = Vector2( 0.9, 0.9 )
-texture = ExtResource( 9 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Player2" type="KinematicBody" parent="Players" index="1"]
-
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 1, 0.184525, -2.63352 )
 input_ray_pickable = true
 input_capture_on_drag = false
@@ -4693,17 +4741,17 @@ axis_lock_angular_x = false
 axis_lock_angular_y = false
 axis_lock_angular_z = false
 collision/safe_margin = 0.001
-script = ExtResource( 5 )
+script = ExtResource( 6 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="CollisionShape" type="CollisionShape" parent="Players/Player2" index="0"]
+[node name="CollisionShape" type="CollisionShape" parent="Players/Characters/Player2" index="0"]
 
 transform = Transform( 1, 0, 0, 0, 1, -3.55271e-015, 0, 3.55271e-015, 1, 0.0130349, 0.0517744, -0.812018 )
 shape = SubResource( 5 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
-[node name="P1" type="MeshInstance" parent="Players/Player2" index="1"]
+[node name="P1" type="MeshInstance" parent="Players/Characters/Player2" index="1"]
 
 transform = Transform( 0.01, 0, 0, 0, -4.37114e-010, 0.01, 0, -0.01, -4.37114e-010, 0.0130349, -0.103723, 0 )
 layers = 1
@@ -4715,7 +4763,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 6 )
+mesh = ExtResource( 7 )
 skeleton = NodePath("..")
 material/0 = null
 material/1 = null
@@ -4728,7 +4776,7 @@ material/7 = null
 material/8 = null
 _sections_unfolded = [ "Transform" ]
 
-[node name="Front" type="Area" parent="Players/Player2" index="2"]
+[node name="Front" type="Area" parent="Players/Characters/Player2" index="2"]
 
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.831785 )
@@ -4753,13 +4801,13 @@ reverb_bus_name = "Master"
 reverb_bus_amount = 0.0
 reverb_bus_uniformity = 0.0
 
-[node name="CollisionShape" type="CollisionShape" parent="Players/Player2/Front" index="0"]
+[node name="CollisionShape" type="CollisionShape" parent="Players/Characters/Player2/Front" index="0"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.152739, 0.319174 )
 shape = SubResource( 6 )
 disabled = false
 
-[node name="Attack" type="Area" parent="Players/Player2" index="3"]
+[node name="Attack" type="Area" parent="Players/Characters/Player2" index="3"]
 
 editor/display_folded = true
 input_ray_pickable = false
@@ -4783,14 +4831,14 @@ reverb_bus_name = "Master"
 reverb_bus_amount = 0.0
 reverb_bus_uniformity = 0.0
 
-[node name="CollisionShape2" type="CollisionShape" parent="Players/Player2/Attack" index="0"]
+[node name="CollisionShape2" type="CollisionShape" parent="Players/Characters/Player2/Attack" index="0"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00416422, -0.735485 )
 shape = SubResource( 7 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
-[node name="RayCast" type="RayCast" parent="Players/Player2" index="4"]
+[node name="RayCast" type="RayCast" parent="Players/Characters/Player2" index="4"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.98023e-008, -0.145806 )
 enabled = true
@@ -4798,10 +4846,10 @@ exclude_parent = true
 cast_to = Vector3( 0, 0, 0.1 )
 collision_mask = 1
 
-[node name="Audio" type="AudioStreamPlayer3D" parent="Players/Player2" index="5"]
+[node name="Audio" type="AudioStreamPlayer3D" parent="Players/Characters/Player2" index="5"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.98023e-008, -1 )
-stream = ExtResource( 7 )
+stream = ExtResource( 8 )
 attenuation_model = 0
 unit_db = 15.0
 unit_size = 1.0
@@ -4819,11 +4867,11 @@ attenuation_filter_cutoff_hz = 5000.0
 attenuation_filter_db = -24.0
 doppler_tracking = 0
 
-[node name="Particles" type="Particles" parent="Players/Player2" index="6"]
+[node name="Particles" type="Particles" parent="Players/Characters/Player2" index="6"]
 
 transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 0.0733841, -0.885435 )
 layers = 1
-material_override = SubResource( 9 )
+material_override = SubResource( 8 )
 cast_shadow = 1
 extra_cull_margin = 0.0
 use_in_baked_light = false
@@ -4844,45 +4892,10 @@ fract_delta = true
 visibility_aabb = AABB( -4, -4, -4, 8, 8, 8 )
 local_coords = true
 draw_order = 0
-process_material = SubResource( 10 )
+process_material = SubResource( 11 )
 draw_passes = 1
-draw_pass_1 = SubResource( 11 )
+draw_pass_1 = SubResource( 12 )
 _sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Time", "Transform" ]
-
-[node name="Health" type="ProgressBar" parent="Players/Player2" index="7"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 656.0
-margin_top = 112.0
-margin_right = 767.0
-margin_bottom = 131.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 0
-custom_styles/fg = SubResource( 14 )
-custom_styles/bg = SubResource( 15 )
-min_value = 0.0
-max_value = 100.0
-step = 1.0
-page = 0.0
-value = 100.0
-exp_edit = false
-rounded = false
-percent_visible = false
-_sections_unfolded = [ "Percent", "custom_styles" ]
-
-[node name="Sprite" type="Sprite" parent="Players/Player2/Health" index="0"]
-
-position = Vector2( 65.7925, -56.9877 )
-scale = Vector2( 0.9, 0.9 )
-texture = ExtResource( 9 )
-_sections_unfolded = [ "Transform" ]
 
 [node name="DirectionalLight" type="DirectionalLight" parent="." index="3"]
 
@@ -4912,9 +4925,11 @@ directional_shadow_depth_range = 0
 directional_shadow_max_distance = 200.0
 _sections_unfolded = [ "Light", "Transform" ]
 
-[node name="Node2D" type="Node2D" parent="." index="4"]
+[node name="UI" type="Node2D" parent="." index="4"]
 
-[node name="TextureButton" type="TextureButton" parent="Node2D" index="0"]
+editor/display_folded = true
+
+[node name="TextureButton" type="TextureButton" parent="UI" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -4937,31 +4952,32 @@ texture_pressed = ExtResource( 10 )
 texture_hover = ExtResource( 10 )
 _sections_unfolded = [ "Textures" ]
 
-[node name="Label" type="Label" parent="Node2D" index="1"]
+[node name="Label" type="Label" parent="UI" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 879.0
+margin_left = 904.0
 margin_top = 1.0
-margin_right = 1127.0
-margin_bottom = 131.0
+margin_right = 1155.0
+margin_bottom = 138.0
+rect_scale = Vector2( 1, 1.1 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 15 )
 custom_colors/font_color = Color( 0.90625, 0.246779, 0.0177002, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "00:00"
+text = "0:00"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 script = ExtResource( 12 )
-_sections_unfolded = [ "Visibility", "custom_colors", "custom_fonts" ]
+_sections_unfolded = [ "Rect", "Visibility", "custom_fonts" ]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="5"]
 
@@ -4972,18 +4988,82 @@ autoplay = true
 mix_target = 0
 bus = "Master"
 
-[connection signal="body_entered" from="Players/Player1/Front" to="Players/Player1" method="_on_Area_body_entered"]
+[node name="Menu" type="Node2D" parent="." index="6"]
 
-[connection signal="body_exited" from="Players/Player1/Front" to="Players/Player1" method="_on_Area_body_exited"]
+visible = false
+position = Vector2( 1.50732, -60.2935 )
+_sections_unfolded = [ "Visibility" ]
 
-[connection signal="body_entered" from="Players/Player1/Attack" to="Players/Player1" method="_on_Attack_body_entered"]
+[node name="Restart" type="Button" parent="Menu" index="0"]
 
-[connection signal="body_entered" from="Players/Player2/Front" to="Players/Player2" method="_on_Area_body_entered"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 895.0
+margin_top = 225.0
+margin_right = 1080.0
+margin_bottom = 279.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 14 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Restart"
+flat = false
+align = 1
+_sections_unfolded = [ "custom_fonts" ]
 
-[connection signal="body_exited" from="Players/Player2/Front" to="Players/Player2" method="_on_Area_body_exited"]
+[node name="Quit" type="Button" parent="Menu" index="1"]
 
-[connection signal="body_entered" from="Players/Player2/Attack" to="Players/Player2" method="_on_Attack_body_entered"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 894.0
+margin_top = 317.0
+margin_right = 1081.0
+margin_bottom = 368.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 14 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Quit"
+flat = false
+align = 1
+_sections_unfolded = [ "custom_fonts" ]
 
-[connection signal="button_up" from="Node2D/TextureButton" to="Arena" method="_on_TNTButton"]
+[connection signal="body_entered" from="Players/Characters/Player1/Front" to="Players/Characters/Player1" method="_on_Area_body_entered"]
+
+[connection signal="body_exited" from="Players/Characters/Player1/Front" to="Players/Characters/Player1" method="_on_Area_body_exited"]
+
+[connection signal="body_entered" from="Players/Characters/Player1/Attack" to="Players/Characters/Player1" method="_on_Attack_body_entered"]
+
+[connection signal="body_entered" from="Players/Characters/Player2/Front" to="Players/Characters/Player2" method="_on_Area_body_entered"]
+
+[connection signal="body_exited" from="Players/Characters/Player2/Front" to="Players/Characters/Player2" method="_on_Area_body_exited"]
+
+[connection signal="body_entered" from="Players/Characters/Player2/Attack" to="Players/Characters/Player2" method="_on_Attack_body_entered"]
+
+[connection signal="button_up" from="UI/TextureButton" to="Arena" method="_on_TNTButton"]
+
+[connection signal="pressed" from="Menu/Restart" to="." method="_on_Restart_pressed"]
+
+[connection signal="pressed" from="Menu/Quit" to="." method="_on_Quit_pressed"]
 
 

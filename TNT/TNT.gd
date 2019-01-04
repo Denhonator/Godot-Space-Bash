@@ -94,6 +94,6 @@ func DestroyTile(body):
 		hasDestroyed = true
 
 func _on_body_entered(body):
-	if (thrown or (nitro and body.get_name().substr(0,4)!="Tile")) and body!=self:
+	if (thrown or (nitro and body.get_name().substr(0,4)!="Tile") or (body.has_method("Die") and velocity.length_squared() > 5 and (body.vel-velocity).length_squared()>5)) and body!=self:
 		DestroyTile(body)
 		timer = 0

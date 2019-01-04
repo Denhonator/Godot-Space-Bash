@@ -4,7 +4,7 @@ var players
 var smooth = 0.05
 
 func _ready():
-	players = get_parent().find_node("Players")
+	players = get_parent().find_node("Players").find_node("Characters")
 
 func _process(delta):
 	var average = Vector3(0,0,0)

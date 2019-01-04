@@ -2,6 +2,7 @@ extends KinematicBody
 
 var vel = Vector3(0,0,0)
 var maxms = 4.5
+var carryms = 2.5
 var ms
 var turnrate = 0.25
 var onGround = false
@@ -21,14 +22,14 @@ func _ready():
 	attack = find_node("Attack")
 	audio = find_node("Audio")
 	particles = find_node("Particles")
-	hpbar = find_node("Health")
+	hpbar = get_parent().get_parent().find_node("UI").find_node(get_name()+"Health")
 	ms = maxms
 
 func _process(delta):
 	if transform.origin.y < -3 or health<=0:
 		Die()
 	MovementAndPhysics(delta)
-	if state["attack"]<=0:
+	if state["attack"]<=0 and onGround:
 		PickupAndThrow(delta)
 	Stomp()
 	if not carrying and stun<=0:
@@ -72,6 +73,7 @@ func PickupAndThrow(delta):
 			if inFront.PickedUp(self):
 				carrying = inFront
 				stun = 0.3
+				ms = carryms
 				vel = Vector3(0,0,0)
 				state["pickup"] = 0.3
 	if state["pickup"]>0:
@@ -118,7 +120,7 @@ func MovementAndPhysics(delta):
 	if not onGround:
 		vel.y -= 0.2
 	else:
-		if Input.is_action_just_pressed(get_name()+"jump"):
+		if not carrying and Input.is_action_just_pressed(get_name()+"jump"):
 			vel.y = 6
 		else:
 			vel.y = -0.2
