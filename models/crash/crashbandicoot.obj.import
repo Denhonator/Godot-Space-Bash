@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/crashbandicoot.obj-0d359336e45ae936995839595609d6d6.mesh"
+
+[deps]
+
+files=[ "res://.import/crashbandicoot.obj-0d359336e45ae936995839595609d6d6.mesh" ]
+
+source_file="res://models/crash/crashbandicoot.obj"
+dest_files=[ "res://.import/crashbandicoot.obj-0d359336e45ae936995839595609d6d6.mesh", "res://.import/crashbandicoot.obj-0d359336e45ae936995839595609d6d6.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
