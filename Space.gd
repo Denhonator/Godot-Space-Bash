@@ -109,9 +109,13 @@ sync func Disconnect():
 	get_tree().paused = true
 	menu.find_node("Disconnect").visible = false
 	PopupText("Disconnected")
-	players["Player1"].local = true
-	players["Player2"].local = true
-	players["Player2"].controls = "Player2"
+	players["Player1"] = find_node("Players").find_node("Characters").find_node("Player1")
+	players["Player2"] = find_node("Players").find_node("Characters").find_node("Player2")
+	if players["Player1"]:
+		players["Player1"].local = true
+	if players["Player2"]:
+		players["Player2"].local = true
+		players["Player2"].controls = "Player2"
 	get_tree().set_network_peer(null)
 	print("Disconnected")
 	

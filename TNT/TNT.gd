@@ -16,10 +16,11 @@ export(bool) var nitro
 
 func _ready():
 	mesh = find_node("MeshInstance")
-	materials.append(load("res://TNT/TNT1.tres"))
-	materials.append(load("res://TNT/TNT2.tres"))
-	materials.append(load("res://TNT/TNT3.tres"))
-	explosion = load("res://Explosion/Explosion.tscn")
+	materials.append(preload("res://TNT/TNT1.tres"))
+	materials.append(preload("res://TNT/TNT2.tres"))
+	materials.append(preload("res://TNT/TNT3.tres"))
+	explosion = preload("res://Explosion/Explosion.tscn")
+	explosion.instance()
 	expl = find_node("Explosion")
 	downray = find_node("RayCast")
 	sound = find_node("Sound")
@@ -35,14 +36,15 @@ func _process(delta):
 		if timer<=0:
 			Explode()
 		else:
-			mesh.material_override = materials[int(timer)]
+			if not nitro:
+				mesh.material_override = materials[int(timer)]
 			timer-=delta
 	
 	velocity.y = -0.1 if is_on_floor() or player else velocity.y-0.2
 	velocity.x = 0.96*velocity.x if is_on_floor() else velocity.x
 	velocity.z = 0.96*velocity.z if is_on_floor() else velocity.z
 	
-	if velocity.y<-5:
+	if velocity.y<-3:
 		thrown = true
 		
 	move_and_slide(velocity, Vector3(0,1,0))
@@ -111,11 +113,10 @@ func GetHit(ex,hit):
 		rpc("RGetHit",ex,hit)
 		
 remote func RGetHit(ex,hit):
-	if nitro:
-		timer = 0
-		return
 	if ex.length_squared():
-		timer = 0.25
+		timer = min(0.25,timer)
+	elif nitro:
+		timer = 0
 	elif hit.y<0:
 		timer = min(2.99,timer)
 	else:
@@ -127,7 +128,7 @@ func DestroyTile(body):
 		return body.get_path()
 
 func _on_body_entered(body):
-	if (thrown or (nitro and body.get_name().substr(0,4)!="Tile") or (body.has_method("Die") and velocity.length_squared() > 5 and (body.vel-velocity).length_squared()>5)) and body!=self:
+	if body!=self and (thrown or (nitro and body.get_name().substr(0,4)!="Tile") or (body.has_method("Die") and velocity.length_squared() > 5 and (body.vel-velocity).length_squared()>5)) and (velocity.y<0 or abs(velocity.x)>0 or abs(velocity.z)>0):
 		if body.get_name().substr(0,4)=="Tile":
 			DestroyPath = body.get_path()
 		timer = 0

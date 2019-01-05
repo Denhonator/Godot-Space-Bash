@@ -178,4 +178,5 @@ func _on_Area_body_exited(body):
 
 func _on_Attack_body_entered(body):
 	if state["attack"]>0 and body!=self and body.has_method("GetHit"):
-		body.GetHit(Vector3(0,0,0), Vector3(body.transform.origin.x-transform.origin.x,0,body.transform.origin.z-transform.origin.z).normalized())
+		if not body.has_method("Attack") or state["attack"]>body.state["attack"]:
+			body.GetHit(Vector3(0,0,0), Vector3(body.transform.origin.x-transform.origin.x,0,body.transform.origin.z-transform.origin.z).normalized())
