@@ -17,6 +17,7 @@ var audio
 var particles
 var state = {"throw":0,"pickup":0,"attack":0}
 var local = true
+var controls
 
 func _ready():
 	ray = find_node("RayCast")
@@ -25,6 +26,7 @@ func _ready():
 	particles = find_node("Particles")
 	hpbar = get_parent().get_parent().find_node("UI").find_node(get_name()+"Health")
 	ms = maxms
+	controls = get_name()
 
 func _process(delta):
 	if transform.origin.y < -3 or health<=0:
@@ -35,7 +37,7 @@ func _process(delta):
 	Stomp()
 	if not carrying and stun<=0:
 		Attack(delta)
-	if get_tree().has_network_peer() and local:
+	if get_tree().get_meta("connected")>0 and local:
 		rpc_unreliable("Sync",vel,translation,rotation,state)
 		
 remote func Sync(v,p,r,s):
@@ -50,13 +52,14 @@ func Die():
 	queue_free()
 	
 func Attack(delta):
-	if state["attack"]<=-0.5 and Input.is_action_just_pressed(get_name()+"attack") and local:
+	if state["attack"]<=-0.5 and Input.is_action_just_pressed(controls+"attack") and local:
 		state["attack"]=0.5
-		audio.play()
 		for body in attack.get_overlapping_bodies():
 			if body.has_method("GetHit") and body!=self:
 				body.GetHit(Vector3(0,0,0), Vector3(body.transform.origin.x-transform.origin.x,0,body.transform.origin.z-transform.origin.z).normalized())
 	particles.emitting = state["attack"] > 0.4
+	if state["attack"] > 0.4 and not audio.playing:
+		audio.play()
 	if state["attack"]>0:
 		rotate_y(10)
 	if state["attack"]>-0.5:
@@ -76,7 +79,7 @@ func Stomp():
 			ray.add_exception(col)
 	
 func PickupAndThrow(delta):
-	if Input.is_action_just_pressed(get_name()+"grab") and local:
+	if Input.is_action_just_pressed(controls+"grab") and local:
 		if carrying:
 			state["throw"] = 0.3
 			ms = 0
@@ -100,13 +103,13 @@ func PickupAndThrow(delta):
 func MovementAndPhysics(delta):
 	if local:
 		var inDir = Vector2(0,0)
-		if Input.is_action_pressed(get_name()+"left"):
+		if Input.is_action_pressed(controls+"left"):
 			inDir.x = 1
-		elif Input.is_action_pressed(get_name()+"right"):
+		elif Input.is_action_pressed(controls+"right"):
 			inDir.x = -1
-		if Input.is_action_pressed(get_name()+"up"):
+		if Input.is_action_pressed(controls+"up"):
 			inDir.y = -1
-		elif Input.is_action_pressed(get_name()+"down"):
+		elif Input.is_action_pressed(controls+"down"):
 			inDir.y = 1
 		inDir = inDir.normalized()
 		
@@ -134,7 +137,7 @@ func MovementAndPhysics(delta):
 			carrying = null
 			ms = maxms
 	else:
-		if not carrying and Input.is_action_just_pressed(get_name()+"jump") and local:
+		if not carrying and Input.is_action_just_pressed(controls+"jump") and local:
 			vel.y = 6
 		else:
 			vel.y = -0.2

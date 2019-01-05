@@ -286,6 +286,7 @@ _sections_unfolded = [ "Pause" ]
 [node name="Arena" type="Spatial" parent="." index="0"]
 
 pause_mode = 1
+editor/display_folded = true
 script = ExtResource( 2 )
 
 [node name="Floor" type="Spatial" parent="Arena" index="0"]
@@ -4478,6 +4479,7 @@ current = true
 [node name="Players" type="Spatial" parent="." index="2"]
 
 pause_mode = 1
+editor/display_folded = true
 
 [node name="Characters" type="Spatial" parent="Players" index="0"]
 
@@ -4928,6 +4930,8 @@ _sections_unfolded = [ "Light", "Transform" ]
 
 [node name="UI" type="Node2D" parent="." index="4"]
 
+editor/display_folded = true
+
 [node name="TextureButton" type="TextureButton" parent="UI" index="0"]
 
 anchor_left = 0.0
@@ -5026,9 +5030,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 1115.0
-margin_top = 230.0
+margin_top = 226.0
 margin_right = 1300.0
-margin_bottom = 281.0
+margin_bottom = 277.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -5053,9 +5057,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 1115.0
-margin_top = 306.0
+margin_top = 311.0
 margin_right = 1300.0
-margin_bottom = 357.0
+margin_bottom = 362.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -5073,7 +5077,35 @@ flat = false
 align = 1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="Quit" type="Button" parent="Menu" index="3"]
+[node name="Disconnect" type="Button" parent="Menu" index="3"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1116.0
+margin_top = 390.0
+margin_right = 1300.0
+margin_bottom = 444.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 14 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Disconnect"
+flat = false
+align = 1
+_sections_unfolded = [ "Visibility", "custom_fonts" ]
+
+[node name="Quit" type="Button" parent="Menu" index="4"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -5099,6 +5131,109 @@ text = "Quit"
 flat = false
 align = 1
 _sections_unfolded = [ "custom_fonts" ]
+
+[node name="IP" type="LineEdit" parent="Menu" index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1359.0
+margin_top = 232.0
+margin_right = 1613.0
+margin_bottom = 276.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 1
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 14 )
+text = "127.0.0.1"
+focus_mode = 2
+context_menu_enabled = true
+placeholder_alpha = 0.6
+caret_blink = false
+caret_blink_speed = 0.65
+caret_position = 0
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="PORT" type="LineEdit" parent="Menu" index="6"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1397.0
+margin_top = 306.0
+margin_right = 1647.0
+margin_bottom = 350.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 1
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 14 )
+text = "7777"
+focus_mode = 2
+context_menu_enabled = true
+placeholder_alpha = 0.6
+caret_blink = false
+caret_blink_speed = 0.65
+caret_position = 0
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Label" type="Label" parent="Menu" index="7"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1314.0
+margin_top = 235.0
+margin_right = 1399.0
+margin_bottom = 343.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 14 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "IP:
+
+PORT:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Connected" type="Label" parent="Menu" index="8"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1147.0
+margin_top = 128.0
+margin_right = 1300.0
+margin_bottom = 172.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 14 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [node name="Camera2D" type="Camera2D" parent="." index="7"]
 
@@ -5145,6 +5280,8 @@ editor_draw_drag_margin = false
 [connection signal="pressed" from="Menu/Join" to="." method="_on_Join_pressed"]
 
 [connection signal="pressed" from="Menu/Host" to="." method="_on_Host_pressed"]
+
+[connection signal="pressed" from="Menu/Disconnect" to="." method="_on_Disconnect_pressed"]
 
 [connection signal="pressed" from="Menu/Quit" to="." method="_on_Quit_pressed"]
 

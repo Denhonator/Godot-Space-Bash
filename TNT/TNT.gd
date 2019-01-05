@@ -47,7 +47,7 @@ func _process(delta):
 		
 	move_and_slide(velocity, Vector3(0,1,0))
 	
-	if get_tree().is_network_server() and get_tree().has_network_peer():
+	if get_tree().get_meta("connected")==1:
 		rpc_unreliable("Sync",timer,velocity,translation)
 		
 remote func Sync(t,v,p):
@@ -79,7 +79,7 @@ remote func Throw(dir):
 			rpc("Throw",dir)
 
 func Explode():
-	if not get_tree().has_network_peer() or get_tree().is_network_server():
+	if get_tree().get_meta("connected")<2:
 		for body in expl.get_overlapping_bodies():
 			if body.has_method("GetHit") and body!=self:
 				body.GetHit(((body.transform.origin-transform.origin)*Vector3(1,0,1)).normalized(),Vector3(0,0,0))
