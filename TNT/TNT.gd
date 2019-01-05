@@ -1,7 +1,6 @@
 extends KinematicBody
 
 var player = null
-var hasDestroyed = false
 var timer = 4
 var thrown = false
 var mesh
@@ -10,6 +9,7 @@ var expl
 var downray
 var explosion
 var sound
+var DestroyPath = null
 var velocity = Vector3(0,0,0)
 
 export(bool) var nitro
@@ -53,9 +53,9 @@ func _process(delta):
 remote func Sync(t,v,p):
 	timer = t
 	velocity = v
-	translation.x = lerp(translation.x,p.x,0.1)
-	translation.y = lerp(translation.y,p.y,0.1)
-	translation.z = lerp(translation.z,p.z,0.1)
+	translation.x = lerp(translation.x,p.x,0.2)
+	translation.y = lerp(translation.y,p.y,0.2)
+	translation.z = lerp(translation.z,p.z,0.2)
 	
 remote func SetPlayer(name):
 	player = get_tree().root.get_child(0).players[name]
@@ -79,20 +79,30 @@ remote func Throw(dir):
 			rpc("Throw",dir)
 
 func Explode():
+	if not get_tree().has_network_peer() or get_tree().is_network_server():
+		for body in expl.get_overlapping_bodies():
+			if body.has_method("GetHit") and body!=self:
+				body.GetHit(((body.transform.origin-transform.origin)*Vector3(1,0,1)).normalized(),Vector3(0,0,0))
+		if not DestroyPath and downray.is_colliding():
+			DestroyPath = DestroyTile(downray.get_collider())
+		RExplode(DestroyPath)
+		if get_tree().has_network_peer():
+			rpc("RExplode",DestroyPath)
+		
+remote func RExplode(path):
 	var newExplosion = explosion.instance()
 	newExplosion.transform.origin = transform.origin
 	newExplosion.emitting = true
 	get_parent().add_child(newExplosion)
 	if player:
 		player.carrying = null
-	for body in expl.get_overlapping_bodies():
-		if body.has_method("GetHit") and body!=self:
-			body.GetHit(((body.transform.origin-transform.origin)*Vector3(1,0,1)).normalized(),Vector3(0,0,0))
-	if downray.is_colliding():
-		DestroyTile(downray.get_collider())
 	remove_child(sound)
 	get_parent().add_child(sound)
 	sound.seek(3.1)
+	if path:
+		var body = get_node(path)
+		if body:
+			get_node(path).queue_free()
 	queue_free()
 	
 func GetHit(ex,hit):
@@ -113,11 +123,11 @@ remote func RGetHit(ex,hit):
 		timer = min(2.99,timer)
 	
 func DestroyTile(body):
-	if !hasDestroyed and body.get_name().substr(0,4)=="Tile":
-		body.queue_free()
-		hasDestroyed = true
+	if body.get_name().substr(0,4)=="Tile":
+		return body.get_path()
 
 func _on_body_entered(body):
 	if (thrown or (nitro and body.get_name().substr(0,4)!="Tile") or (body.has_method("Die") and velocity.length_squared() > 5 and (body.vel-velocity).length_squared()>5)) and body!=self:
-		DestroyTile(body)
+		if body.get_name().substr(0,4)=="Tile":
+			DestroyPath = body.get_path()
 		timer = 0

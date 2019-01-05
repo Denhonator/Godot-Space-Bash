@@ -4983,7 +4983,7 @@ _sections_unfolded = [ "Rect", "Visibility", "custom_fonts" ]
 stream = ExtResource( 13 )
 volume_db = 0.0
 pitch_scale = 1.0
-autoplay = true
+autoplay = false
 mix_target = 0
 bus = "Master"
 
