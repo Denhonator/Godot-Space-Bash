@@ -5,9 +5,12 @@ var minutes = 0
 var runTimer = true
 var menu
 var peer
+var players = {"Player1":null,"Player2":null}
 
 func _ready():
 	menu = find_node("Menu")
+	players["Player1"] = find_node("Players").find_node("Characters").find_node("Player1")
+	players["Player2"] = find_node("Players").find_node("Characters").find_node("Player2")
 	get_tree().paused = true
 
 func _process(delta):
@@ -45,10 +48,12 @@ func _notification(what):
 
 func _on_Join_pressed():
 	peer = NetworkedMultiplayerENet.new()
-	peer.create_server(7777, 2)
-	get_tree().set_network_peer(peer)
-
-func _on_Host_pressed():
-	peer = NetworkedMultiplayerENet.new()
 	peer.create_client("127.0.0.1", 7777)
 	get_tree().set_network_peer(peer)
+	players["Player1"].local = false
+	
+func _on_Host_pressed():
+	peer = NetworkedMultiplayerENet.new()
+	peer.create_server(7777, 2)
+	get_tree().set_network_peer(peer)
+	players["Player2"].local = false

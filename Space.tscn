@@ -286,7 +286,6 @@ _sections_unfolded = [ "Pause" ]
 [node name="Arena" type="Spatial" parent="." index="0"]
 
 pause_mode = 1
-editor/display_folded = true
 script = ExtResource( 2 )
 
 [node name="Floor" type="Spatial" parent="Arena" index="0"]
@@ -4482,10 +4481,9 @@ pause_mode = 1
 
 [node name="Characters" type="Spatial" parent="Players" index="0"]
 
-editor/display_folded = true
-
 [node name="Player1" type="KinematicBody" parent="Players/Characters" index="0"]
 
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 1, 0.184525, -0.227213 )
 input_ray_pickable = true
 input_capture_on_drag = false
@@ -5023,15 +5021,14 @@ _sections_unfolded = [ "custom_fonts" ]
 
 [node name="Join" type="Button" parent="Menu" index="1"]
 
-visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 895.0
-margin_top = 306.0
-margin_right = 1080.0
-margin_bottom = 357.0
+margin_left = 1115.0
+margin_top = 230.0
+margin_right = 1300.0
+margin_bottom = 281.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -5051,15 +5048,14 @@ _sections_unfolded = [ "custom_fonts" ]
 
 [node name="Host" type="Button" parent="Menu" index="2"]
 
-visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 895.0
-margin_top = 382.0
-margin_right = 1080.0
-margin_bottom = 433.0
+margin_left = 1115.0
+margin_top = 306.0
+margin_right = 1300.0
+margin_bottom = 357.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2

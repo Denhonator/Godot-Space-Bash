@@ -37,7 +37,7 @@ func _process(delta):
 		else:
 			mesh.material_override = materials[int(timer)]
 			timer-=delta
-			
+	
 	velocity.y = -0.1 if is_on_floor() or player else velocity.y-0.2
 	velocity.x = 0.96*velocity.x if is_on_floor() else velocity.x
 	velocity.z = 0.96*velocity.z if is_on_floor() else velocity.z
@@ -46,18 +46,37 @@ func _process(delta):
 		thrown = true
 		
 	move_and_slide(velocity, Vector3(0,1,0))
+	
+	if get_tree().is_network_server() and get_tree().has_network_peer():
+		rpc_unreliable("Sync",timer,velocity,translation)
+		
+remote func Sync(t,v,p):
+	timer = t
+	velocity = v
+	translation.x = lerp(translation.x,p.x,0.1)
+	translation.y = lerp(translation.y,p.y,0.1)
+	translation.z = lerp(translation.z,p.z,0.1)
+	
+remote func SetPlayer(name):
+	player = get_tree().root.get_child(0).players[name]
+	timer = min(2.99, timer)
 
 func PickedUp(node):
 	if not nitro:
 		player = node
+		if get_tree().has_network_peer():
+			rpc("SetPlayer", player.get_name())
 		timer = min(2.99, timer)
 		return true
 	return false
 	
-func Throw(dir):
-	velocity = dir
-	player = null
-	thrown = true
+remote func Throw(dir):
+	if player:
+		velocity = dir
+		player = null
+		thrown = true
+		if get_tree().has_network_peer():
+			rpc("Throw",dir)
 
 func Explode():
 	var newExplosion = explosion.instance()
@@ -77,6 +96,11 @@ func Explode():
 	queue_free()
 	
 func GetHit(ex,hit):
+	RGetHit(ex,hit)
+	if get_tree().has_network_peer():
+		rpc("RGetHit",ex,hit)
+		
+remote func RGetHit(ex,hit):
 	if nitro:
 		timer = 0
 		return

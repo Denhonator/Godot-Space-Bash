@@ -30,7 +30,7 @@ func SpawnTNT():
 			newTNT.transform.origin = childpos
 			newTNT.scale = Vector3(0,0,0)
 			add_child(newTNT)
-			if get_tree().has_network_peer():
+			if get_tree().has_network_peer() and get_tree().is_network_server():
 				rpc("SpawnTNTTo",childpos, a==0)
 			return
 			
@@ -44,15 +44,16 @@ remote func SpawnTNTTo(pos, n):
 	add_child(newTNT)
 
 func _process(delta):
-	timer+=delta
-	if timer>interval:
-		if a>0:
-			a-=1
-			timer = interval-0.3
-		else:
-			timer=0
-			a = amount
-		SpawnTNT()
+	if not get_tree().has_network_peer() or get_tree().is_network_server():
+		timer+=delta
+		if timer>interval:
+			if a>0:
+				a-=1
+				timer = interval-0.3
+			else:
+				timer=0
+				a = amount
+			SpawnTNT()
 
 
 func _on_TNTButton():

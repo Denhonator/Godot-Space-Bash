@@ -16,6 +16,7 @@ var attack
 var audio
 var particles
 var state = {"throw":0,"pickup":0,"attack":0}
+var local = true
 
 func _ready():
 	ray = find_node("RayCast")
@@ -34,12 +35,22 @@ func _process(delta):
 	Stomp()
 	if not carrying and stun<=0:
 		Attack(delta)
+	if get_tree().has_network_peer() and local:
+		rpc_unreliable("Sync",vel,translation,rotation,state)
+		
+remote func Sync(v,p,r,s):
+	vel = v
+	translation.x = lerp(translation.x,p.x,0.1)
+	translation.y = lerp(translation.y,p.y,0.1)
+	translation.z = lerp(translation.z,p.z,0.1)
+	rotation = r
+	state = s
 	
 func Die():
 	queue_free()
 	
 func Attack(delta):
-	if state["attack"]<=-0.5 and Input.is_action_just_pressed(get_name()+"attack"):
+	if state["attack"]<=-0.5 and Input.is_action_just_pressed(get_name()+"attack") and local:
 		state["attack"]=0.5
 		audio.play()
 		for body in attack.get_overlapping_bodies():
@@ -65,7 +76,7 @@ func Stomp():
 			ray.add_exception(col)
 	
 func PickupAndThrow(delta):
-	if Input.is_action_just_pressed(get_name()+"grab"):
+	if Input.is_action_just_pressed(get_name()+"grab") and local:
 		if carrying:
 			state["throw"] = 0.3
 			ms = 0
@@ -87,33 +98,34 @@ func PickupAndThrow(delta):
 			ms = maxms
 	
 func MovementAndPhysics(delta):
-	var inDir = Vector2(0,0)
-	if Input.is_action_pressed(get_name()+"left"):
-		inDir.x = 1
-	elif Input.is_action_pressed(get_name()+"right"):
-		inDir.x = -1
-	if Input.is_action_pressed(get_name()+"up"):
-		inDir.y = -1
-	elif Input.is_action_pressed(get_name()+"down"):
-		inDir.y = 1
-	inDir = inDir.normalized()
-	
-	if stun<=0:
-		vel.x = inDir.y*ms
-		vel.z = inDir.x*ms
+	if local:
+		var inDir = Vector2(0,0)
+		if Input.is_action_pressed(get_name()+"left"):
+			inDir.x = 1
+		elif Input.is_action_pressed(get_name()+"right"):
+			inDir.x = -1
+		if Input.is_action_pressed(get_name()+"up"):
+			inDir.y = -1
+		elif Input.is_action_pressed(get_name()+"down"):
+			inDir.y = 1
+		inDir = inDir.normalized()
+		
+		if stun<=0 and state["attack"]<=0 and inDir.length_squared():
+			var angle = inDir.angle()-rotation.y
+			if(angle>PI):
+				angle-=2*PI
+			if(angle<-PI):
+				angle+=2*PI
+			rotate_y(clamp(angle,-turnrate,turnrate))
+		
+		if stun<=0:
+			vel.x = inDir.y*ms
+			vel.z = inDir.x*ms
 	
 	if stun>0:
 		stun-=delta
 		vel.x*=0.9
 		vel.z*=0.9
-	
-	if stun<=0 and state["attack"]<=0 and inDir.length_squared():
-		var angle = inDir.angle()-rotation.y
-		if(angle>PI):
-			angle-=2*PI
-		if(angle<-PI):
-			angle+=2*PI
-		rotate_y(clamp(angle,-turnrate,turnrate))
 	
 	if not onGround:
 		vel.y -= 0.2
@@ -122,7 +134,7 @@ func MovementAndPhysics(delta):
 			carrying = null
 			ms = maxms
 	else:
-		if not carrying and Input.is_action_just_pressed(get_name()+"jump"):
+		if not carrying and Input.is_action_just_pressed(get_name()+"jump") and local:
 			vel.y = 6
 		else:
 			vel.y = -0.2
@@ -131,6 +143,11 @@ func MovementAndPhysics(delta):
 	onGround = is_on_floor()
 
 func GetHit(ex,hit):
+	RGetHit(ex,hit)
+	if get_tree().has_network_peer():
+		rpc("RGetHit",ex,hit)
+	
+remote func RGetHit(ex,hit):
 	if stun<=0:
 		if ex.length_squared():
 			vel=ex*10
